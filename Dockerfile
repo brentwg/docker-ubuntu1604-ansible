@@ -21,6 +21,9 @@ RUN add-apt-repository -y ppa:ansible/ansible \
   && rm -rf /var/lib/apt/lists/* \
   && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
   && apt-get clean
+  
+# Create brentwg user
+RUN useradd -ms /bin/bash brentwg
 
 COPY initctl_faker .
 RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
